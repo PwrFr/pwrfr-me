@@ -1,29 +1,41 @@
 import { useEffect, useState } from 'react';
 import { Button } from '../ui/button';
-import { Moon, Sun } from 'lucide-react';
+import { Monitor, Moon, Sun } from 'lucide-react';
+
+const themes = ['light', 'dark', 'system'] as const;
+type Theme = (typeof themes)[number];
 
 export default function DarkModeToggle() {
-    const [isDark, setIsDark] = useState(() =>
-        document.documentElement.classList.contains('dark')
-    );
+    const [theme, setTheme] = useState<Theme>(() => {
+        return (localStorage.getItem('theme') as Theme) || 'system';
+    });
 
     useEffect(() => {
-        if (isDark) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
+        if (theme === 'system') {
+            const prefersDark = window.matchMedia(
+                '(prefers-color-scheme: dark)'
+            ).matches;
+            document.documentElement.classList.toggle('dark', prefersDark);
         } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
+            document.documentElement.classList.toggle('dark', theme === 'dark');
         }
-    }, [isDark]);
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
+    // Cycle through themes
+    const toggleTheme = () => {
+        const nextTheme = themes[(themes.indexOf(theme) + 1) % themes.length];
+        setTheme(nextTheme);
+    };
     return (
-        <Button
-            className='rounded-full'
-            size={'icon'}
-            onClick={() => setIsDark(!isDark)}
-        >
-            {isDark ? <Moon /> : <Sun />}
+        <Button className='rounded-full' size={'icon'} onClick={toggleTheme}>
+            {theme === 'light' ? (
+                <Sun />
+            ) : theme === 'dark' ? (
+                <Moon />
+            ) : (
+                <Monitor />
+            )}
         </Button>
     );
 }
