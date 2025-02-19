@@ -17,7 +17,7 @@ export const Layout = () => {
         <>
             <nav
                 style={{ justifySelf: 'anchor-center' }}
-                className={`sticky top-4 z-10 rounded-full border p-1 duration-300 ease-out ${
+                className={`fixed top-4 z-10 rounded-full border p-1 duration-300 ease-out ${
                     toggle ? 'w-3/4' : 'w-[20rem]'
                 } flex items-center justify-between gap-12 backdrop-blur-lg`}
             >
