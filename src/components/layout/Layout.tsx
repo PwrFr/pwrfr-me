@@ -14,11 +14,12 @@ export const Layout = () => {
         }
     }, []);
     return (
-        <div>
+        <>
             <nav
+                style={{ justifySelf: 'anchor-center' }}
                 className={`sticky top-4 z-10 rounded-full border p-1 duration-300 ease-out ${
                     toggle ? 'w-3/4' : 'w-[20rem]'
-                } justify-self-center flex items-center justify-between gap-12 backdrop-blur-lg`}
+                } flex items-center justify-between gap-12 backdrop-blur-lg`}
             >
                 <Button size={'icon'} className='rounded-full'>
                     PW
@@ -39,6 +40,6 @@ export const Layout = () => {
             <div className='h-[200dvh]'>
                 <Outlet />
             </div>
-        </div>
+        </>
     );
 };
