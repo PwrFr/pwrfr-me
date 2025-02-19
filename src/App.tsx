@@ -6,7 +6,7 @@ function App() {
     return (
         <div className='h-[45dvw] grid place-items-center'>
             <h1 className='text-[20dvw]'>PWRFR</h1>
-            <div>Portfolio</div>
+            <div>Portfolio1</div>
         </div>
     );
 }
