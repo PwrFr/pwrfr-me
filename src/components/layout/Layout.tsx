@@ -2,24 +2,22 @@ import { Dot } from 'lucide-react';
 import { Outlet } from 'react-router';
 import { NavLink } from 'react-router';
 import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import DarkModeToggle from './DarkModeToggle';
 
 export const Layout = () => {
-    const [toggle] = useState(false);
     useEffect(() => {
         const theme = localStorage.getItem('theme');
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
         }
     }, []);
+
     return (
         <>
             <nav
                 style={{ justifySelf: 'anchor-center' }}
-                className={`fixed top-4 z-10 rounded-full border p-1 duration-300 ease-out ${
-                    toggle ? 'w-3/4' : 'w-[20rem]'
-                } flex items-center justify-between gap-12 backdrop-blur-lg`}
+                className={`fixed top-4 z-10 rounded-full border p-1 duration-300 ease-out flex items-center justify-between gap-12 backdrop-blur-lg expandable-nav`}
             >
                 <Button size={'icon'} className='rounded-full'>
                     PW
@@ -37,7 +35,7 @@ export const Layout = () => {
             </nav>
 
             {/* will either be <Home/> or <Settings/> */}
-            <div className='h-[200dvh]'>
+            <div className='h-[1000dvh]'>
                 <Outlet />
             </div>
         </>

@@ -57,13 +57,12 @@ export const TablePage = () => {
     ];
 
     return (
-        <div className='max-w-[1280px] mx-auto mt-10'>
+        <div className='max-w-[1280px] mx-auto mt-28'>
             <div className='grid gap-4'>
                 <div className='flex justify-between items-center'>
                     <h1 className='font-medium text-4xl'>Table</h1>
                     <Button onClick={() => setOpen(true)}>Open</Button>
                 </div>
-                <hr />
 
                 <div>
                     <Table>

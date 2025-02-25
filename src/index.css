@@ -5,10 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+    /* padding: 0 2rem; */
     font-family: 'Montserrat';
     line-height: 1.5;
     font-weight: 400;
-
+    overflow-x: hidden;
     color-scheme: light dark;
     /* color: rgba(255, 255, 255, 0.87); */
     /* background-color: #242424; */
@@ -17,14 +18,14 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    --background: hsl(0 0% 100%);
+    --background: hsl(45, 29%, 97%);
     --foreground: hsl(0 0% 3.9%);
-    --card: hsl(0 0% 100%);
+    --card: hsl(45, 29%, 97%);
     --card-foreground: hsl(0 0% 3.9%);
-    --popover: hsl(0 0% 100%);
+    --popover: hsl(45, 29%, 97%);
     --popover-foreground: hsl(0 0% 3.9%);
     --primary: hsl(0 0% 9%);
-    --primary-foreground: hsl(0 0% 98%);
+    --primary-foreground: hsl(45, 29%, 97%);
     --secondary: hsl(0 0% 96.1%);
     --secondary-foreground: hsl(0 0% 9%);
     --muted: hsl(0 0% 96.1%);
@@ -32,7 +33,7 @@
     --accent: hsl(0 0% 96.1%);
     --accent-foreground: hsl(0 0% 9%);
     --destructive: hsl(0 84.2% 60.2%);
-    --destructive-foreground: hsl(0 0% 98%);
+    --destructive-foreground: hsl(45, 29%, 97%);
     --border: hsl(0 0% 89.8%);
     --input: hsl(0 0% 89.8%);
     --ring: hsl(0 0% 3.9%);
@@ -46,21 +47,21 @@
 
 .dark {
     --background: hsl(0 0% 3.9%);
-    --foreground: hsl(0 0% 98%);
+    --foreground: hsl(45, 29%, 97%);
     --card: hsl(0 0% 3.9%);
-    --card-foreground: hsl(0 0% 98%);
+    --card-foreground: hsl(45, 29%, 97%);
     --popover: hsl(0 0% 3.9%);
-    --popover-foreground: hsl(0 0% 98%);
-    --primary: hsl(0 0% 98%);
+    --popover-foreground: hsl(45, 29%, 97%);
+    --primary: hsl(45, 29%, 97%);
     --primary-foreground: hsl(0 0% 9%);
     --secondary: hsl(0 0% 14.9%);
-    --secondary-foreground: hsl(0 0% 98%);
+    --secondary-foreground: hsl(45, 29%, 97%);
     --muted: hsl(0 0% 14.9%);
     --muted-foreground: hsl(0 0% 63.9%);
     --accent: hsl(0 0% 14.9%);
-    --accent-foreground: hsl(0 0% 98%);
+    --accent-foreground: hsl(45, 29%, 97%);
     --destructive: hsl(0, 76%, 51%);
-    --destructive-foreground: hsl(0 0% 98%);
+    --destructive-foreground: hsl(45, 29%, 97%);
     --border: hsl(0 0% 14.9%);
     --input: hsl(0 0% 14.9%);
     --ring: hsl(0 0% 83.1%);
@@ -116,4 +117,58 @@ a {
 }
 a.active {
     @apply bg-primary text-primary-foreground duration-200 px-4;
+}
+
+.expandable-nav {
+    width: 80%;
+    min-width: 20rem;
+    animation: expandable-width ease-in-out forwards;
+    animation-timeline: scroll();
+    animation-range: 0rem 50dvh;
+}
+
+@keyframes expandable-width {
+    from {
+        width: 80%;
+    }
+    to {
+        width: 30%;
+    }
+}
+
+.zoom-name {
+    content: 'PWRFR';
+    animation: zoom-in ease-in-out forwards;
+    animation-timeline: scroll();
+    animation-range: 0rem 100dvh;
+}
+
+@keyframes zoom-in {
+    0% {
+    }
+    95% {
+        transform: scale(100) translateX(-0.75dvw);
+        zoom: 100%;
+    }
+    100% {
+        transform: scale(100) translateX(-0.75dvw);
+        zoom: 100%;
+        opacity: 0;
+    }
+}
+
+.fade-card {
+    animation: fade-in ease-in-out forwards;
+    animation-timeline: view();
+    animation-range: 40dvh 100dvh;
+    opacity: 0;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
