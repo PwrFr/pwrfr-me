@@ -1,12 +1,31 @@
+import { useEffect, useState } from 'react';
+
 function App() {
+    const [isPhone, setIsPhone] = useState(false);
+    useEffect(() => {
+        if (
+            navigator.userAgent.match(
+                /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i
+            )
+        ) {
+            setIsPhone(true);
+        }
+    }, []);
     return (
         <>
-            <div className='zoom-name bg-primary z-0'>
+            <div className='zoom-name bg-primary z-50'>
                 <h1 className='text-[20dvw] text-background font-medium absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%]'>
                     PWRFR
                 </h1>
             </div>
             <div className='relative z-10'>
+                {isPhone ? (
+                    <div
+                        className={`h-screen text-background p-8 bg-primary grid place-items-center`}
+                    >
+                        <h1 className='text-[20dvw] '>PWRFR</h1>
+                    </div>
+                ) : null}
                 <div className={`h-screen sticky top-0 p-8`}>
                     <h1 className='text-[8dvw] fade-card'>About Me</h1>
                     <p className='fade-card'>
@@ -16,7 +35,8 @@ function App() {
                         consequatur, obcaecati corrupti voluptates quia non?
                     </p>
                 </div>
-                <div className={`h-screen`}></div>
+                {!isPhone ? <div className={`h-screen`}></div> : null}
+
                 <div className={`h-screen sticky top-0 bg-background p-8`}>
                     <h1 className='text-[8dvw]'>Skills</h1>
                     <p>

@@ -121,23 +121,6 @@ a.active {
     @apply bg-primary text-primary-foreground duration-200 px-4;
 }
 
-.expandable-nav {
-    width: 80%;
-    min-width: 20rem;
-    animation: expandable-width ease-in-out forwards;
-    animation-timeline: scroll();
-    animation-range: 0rem 50dvh;
-}
-
-@keyframes expandable-width {
-    from {
-        width: 80%;
-    }
-    to {
-        width: 30%;
-    }
-}
-
 .zoom-name {
     position: fixed; /* Change from sticky to fixed to prevent layout impact */
     width: 100%;
@@ -146,7 +129,7 @@ a.active {
     left: 0;
     overflow: hidden; /* Prevent overflowing content */
     pointer-events: none;
-    z-index: -1; /* Keep it behind other content */
+    z-index: 10; /* Keep it behind other content */
     animation: zoom-fade ease-in-out forwards;
     animation-timeline: scroll();
     animation-range: 0 100dvh; /* Control when animation completes */
