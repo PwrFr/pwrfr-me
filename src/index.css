@@ -5,12 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none;
     /* padding: 0 2rem; */
     font-family: 'Montserrat';
     line-height: 1.5;
     font-weight: 400;
     overflow-x: hidden;
-    color-scheme: light dark;
+    /* color-scheme: light dark; */
     /* color: rgba(255, 255, 255, 0.87); */
     /* background-color: #242424; */
 
@@ -19,11 +21,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     --background: hsl(45, 29%, 97%);
-    --foreground: hsl(0 0% 3.9%);
+    --foreground: hsl(0 0% 9%);
     --card: hsl(45, 29%, 97%);
-    --card-foreground: hsl(0 0% 3.9%);
+    --card-foreground: hsl(0 0% 9%);
     --popover: hsl(45, 29%, 97%);
-    --popover-foreground: hsl(0 0% 3.9%);
+    --popover-foreground: hsl(0 0% 9%);
     --primary: hsl(0 0% 9%);
     --primary-foreground: hsl(45, 29%, 97%);
     --secondary: hsl(0 0% 96.1%);
@@ -137,21 +139,31 @@ a.active {
 }
 
 .zoom-name {
-    content: 'PWRFR';
-    animation: zoom-in ease-in-out forwards;
+    position: fixed; /* Change from sticky to fixed to prevent layout impact */
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: hidden; /* Prevent overflowing content */
+    pointer-events: none;
+    z-index: -1; /* Keep it behind other content */
+    animation: zoom-fade ease-in-out forwards;
     animation-timeline: scroll();
-    animation-range: 0rem 100dvh;
+    animation-range: 0 100dvh; /* Control when animation completes */
 }
 
-@keyframes zoom-in {
+@keyframes zoom-fade {
     0% {
+        transform: scale(1);
+        opacity: 1;
     }
-    95% {
-        transform: scale(100) translateX(-0.75dvw);
+    80% {
+        transform: scale(100);
         zoom: 100%;
+        opacity: 1;
     }
     100% {
-        transform: scale(100) translateX(-0.75dvw);
+        transform: scale(100);
         zoom: 100%;
         opacity: 0;
     }
@@ -160,15 +172,16 @@ a.active {
 .fade-card {
     animation: fade-in ease-in-out forwards;
     animation-timeline: view();
-    animation-range: 40dvh 100dvh;
+    animation-range: 120dvh 140dvh;
     opacity: 0;
 }
 
 @keyframes fade-in {
-    from {
+    0% {
         opacity: 0;
     }
-    to {
+    100% {
+        transform: translateY(-1rem);
         opacity: 1;
     }
 }
