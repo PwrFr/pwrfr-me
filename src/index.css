@@ -8,7 +8,7 @@
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none;
     /* padding: 0 2rem; */
-    font-family: 'Montserrat';
+    font-family: 'Bebas Neue';
     line-height: 1.5;
     font-weight: 400;
     overflow-x: hidden;
@@ -114,13 +114,6 @@
     }
 }
 
-a {
-    @apply px-0 py-1 rounded-full text-sm;
-}
-a.active {
-    @apply bg-primary text-primary-foreground duration-200 px-4;
-}
-
 .zoom-name {
     position: fixed; /* Change from sticky to fixed to prevent layout impact */
     width: 100%;
@@ -128,7 +121,7 @@ a.active {
     top: 0;
     left: 0;
     overflow: hidden; /* Prevent overflowing content */
-    pointer-events: none;
+    /* pointer-events: none; */
     z-index: 10; /* Keep it behind other content */
     animation: zoom-fade ease-in-out forwards;
     animation-timeline: scroll();
@@ -165,6 +158,44 @@ a.active {
     }
     100% {
         transform: translateY(-1rem);
+        opacity: 1;
+    }
+}
+
+.typing-animation {
+    /* @apply text-[20dvw] text-background font-medium absolute top-[50%] left-[50%] transform translate-y-[-50%] translate-x-[-50%] */
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 1s cubic-bezier(0.55, 0, 0.1, 1) forwards;
+    /* position: absolute;
+    transform: translate(-25%, -50%); */
+    color: var(--background);
+    opacity: 0;
+}
+
+.typing-animation:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.typing-animation:nth-child(3) {
+    animation-delay: 0.3s;
+}
+.typing-animation:nth-child(4) {
+    animation-delay: 0.4s;
+}
+.typing-animation:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+@keyframes typing {
+    0% {
+        opacity: 1;
+        width: 50%;
+    }
+    50% {
+        /* opacity: 0.5; */
+        width: 0%;
+    }
+    100% {
         opacity: 1;
     }
 }
