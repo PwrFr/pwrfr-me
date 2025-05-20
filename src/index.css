@@ -148,16 +148,16 @@
 .fade-card {
     animation: fade-in ease-in-out forwards;
     animation-timeline: view();
-    animation-range: 120dvh 140dvh;
+    animation-range: 10% 15%;
     opacity: 0;
 }
 
 @keyframes fade-in {
     0% {
         opacity: 0;
+        transform: translateY(1rem);
     }
     100% {
-        transform: translateY(-1rem);
         opacity: 1;
     }
 }
@@ -197,5 +197,19 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+.skill-scroller {
+    mask: linear-gradient(90deg, transparent, white 1%, white 99%, transparent);
+    overflow: hidden;
+    animation: slide linear forwards;
+    animation-timeline: scroll(root);
+    animation-range: 15% 40%;
+}
+
+@keyframes slide {
+    to {
+        transform: translate(-20rem);
     }
 }

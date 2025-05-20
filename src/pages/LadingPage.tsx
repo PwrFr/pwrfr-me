@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-
 function App() {
     const [isPhone, setIsPhone] = useState(false);
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
     useEffect(() => {
         if (
             navigator.userAgent.match(
@@ -11,40 +13,72 @@ function App() {
             setIsPhone(true);
         }
     }, []);
+
+    const technologies = [
+        'HTML',
+        'CSS',
+        'JS',
+        'Typescript',
+        'Next.JS',
+        'Nuxt.JS',
+        'React.JS',
+        'React Native',
+        'Vue.JS',
+        'UI',
+        'Web Applications',
+        'Responsive Design',
+        'Front End Development',
+        'Canva',
+        'Figma',
+    ];
     return (
         <>
-            <div className='zoom-name bg-primary z-50 relative flex justify-center items-center'>
-                <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
-                    P
-                </h1>
-                <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
-                    W
-                </h1>
-                <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
-                    R
-                </h1>
-                <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
-                    F
-                </h1>
-                <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
-                    R
-                </h1>
-            </div>
-            <div className='relative z-10'>
-                {isPhone ? (
-                    <div
-                        className={`h-screen text-background p-8 bg-primary grid place-items-center`}
-                    >
-                        <h1 className='text-[20dvw] '>PWRFR</h1>
-                    </div>
-                ) : null}
-                <div className={`h-screen sticky top-0 p-8`}>
-                    <h1 className='text-[8dvw] fade-card' id='profile'>
-                        <div className='bg-primary rounded-full w-6 h-6'></div>I
-                        am{' '}
-                        <span className='font-medium'>Frontend Developer</span>
+            {isPhone ? (
+                <div
+                    className={`h-screen text-background p-8 bg-primary grid place-items-center`}
+                >
+                    <h1 className='text-[20dvw] '>PWRFR</h1>
+                </div>
+            ) : (
+                <div className='zoom-name bg-primary z-50 relative flex justify-center items-center'>
+                    <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
+                        P
                     </h1>
-                    <p className='fade-card'>
+                    <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
+                        W
+                    </h1>
+                    <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
+                        R
+                    </h1>
+                    <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
+                        F
+                    </h1>
+                    <h1 className='text-[20dvw] text-background font-medium typing-animation text-center'>
+                        R
+                    </h1>
+                </div>
+            )}
+            {/* {isPhone ? null : (
+                    <>
+                        <div className={`h-screen`}></div>
+                        <div className={`h-screen`}></div>
+                    </>
+                )} */}
+            <div className='relative z-10'>
+                <div className={`h-screen sticky top-0 p-8 flex flex-col`}>
+                    {/* <div className='w-full h-[20dvh] bg-amber-700 col-span-2'>
+                        s
+                    </div>
+                    <div className='w-full h-full bg-amber-700'>s</div>
+                    <div className='w-full h-full bg-amber-700'>s</div> */}
+                    {/* <div className='fade-card'> */}
+                    <div className='flex'>
+                        <h1 className='text-9xl fade-card ' id='profile'>
+                            <div className='bg-primary rounded-full w-6 h-6' />I
+                            am Frontend Developer
+                        </h1>
+                    </div>
+                    <p className='fade-card pb-4 flex-1'>
                         With a strong background in Vue.js, JavaScript, and
                         modern web technologies, I have successfully developed
                         and optimized CRM web applications, ensuring seamless
@@ -64,19 +98,36 @@ function App() {
                         foundation in component-based development across
                         frameworks. I am eager to bring my technical expertise,
                         problem-solving mindset, and mentorship experience to
-                        your team. I would love the opportunity to discuss how
-                        my skills align with your company’s goals.
+                        your team.
                     </p>
+                    {/* </div> */}
+                    <div className='fade-card'>
+                        <div className='flex gap-4 overflow-auto px-4 '>
+                            {technologies.map((skill, i) => (
+                                <div
+                                    className='bg-primary text-background px-4 py-2 min-w-max rounded-lg'
+                                    key={i}
+                                >
+                                    {skill}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
                 {!isPhone ? (
                     <>
                         <div className={`h-screen`}></div>
                         <div className={`h-screen`}></div>
+                        <div className={`h-screen`}></div>
+                        <div className={`h-screen`}></div>
+                        <div className={`h-screen`}></div>
+                        <div className={`h-screen`}></div>
+                        <div className={`h-screen`}></div>
                     </>
                 ) : null}
 
-                <div className={`h-screen sticky top-0 bg-background p-8`}>
-                    <h1 className='text-[8dvw]'>Skills</h1>
+                <div className={`h-[200dvh] sticky top-0 bg-background p-8`}>
+                    <h1 className='text-9xl'>Skills</h1>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing
                         elit. Molestias, vero? Ut alias sapiente neque maxime
@@ -88,7 +139,7 @@ function App() {
                 <div
                     className={`h-screen sticky top-0 bg-primary text-background p-8`}
                 >
-                    <h1 className='text-[8dvw]'>Works</h1>
+                    <h1 className='text-9xl'>Works</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Asperiores cum dolorum itaque nulla vitae vel quos qui
@@ -102,7 +153,7 @@ function App() {
             </div>
             <div className='relative'>
                 <div className={`h-screen sticky top-0 p-8`}>
-                    <h1 className='text-[8dvw]'>About Me</h1>
+                    <h1 className='text-9xl'>About Me</h1>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Repellat, illo? Deleniti maxime nisi suscipit commodi,
@@ -111,7 +162,7 @@ function App() {
                     </p>
                 </div>
                 <div className={`h-screen sticky top-0 bg-background p-8`}>
-                    <h1 className='text-[8dvw]'>Skills</h1>
+                    <h1 className='text-9xl'>Skills</h1>
                     <p>
                         Lorem, ipsum dolor sit amet consectetur adipisicing
                         elit. Molestias, vero? Ut alias sapiente neque maxime
@@ -121,29 +172,32 @@ function App() {
                     </p>
                 </div>
             </div>
-            <div className=' bg-primary z-50 relative flex justify-center items-center leading-60'>
-                <h1 className='text-[20rem] text-background font-medium text-center'>
-                    P
-                </h1>
-                <h1 className='text-[20rem] text-background font-medium text-center'>
-                    A
-                </h1>
-                <h1 className='text-[20rem] text-background font-medium text-center'>
-                    W
-                </h1>
-                <h1 className='text-[20rem] text-background font-medium text-center'>
-                    A
-                </h1>
-                <h1 className='text-[20rem] text-background font-medium text-center'>
-                    R
-                </h1>
-                <h1 className='text-[20rem] text-background font-medium text-center'>
-                    I
-                </h1>
-                <h1 className='text-[20rem] text-background font-medium text-center'>
-                    S
-                </h1>
-            </div>
+            {/* <div className='bg-primary z-50 flex flex-col justify-center items-center'>
+                <div className=' relative flex justify-center items-center'>
+                    <h1 className='w-full text-[20dvw] leading-50 text-background font-medium text-center'>
+                        P
+                    </h1>
+                    <h1 className='w-full text-[20dvw] leading-50 text-background font-medium text-center'>
+                        A
+                    </h1>
+                    <h1 className='w-full text-[20dvw] leading-50 text-background font-medium text-center'>
+                        W
+                    </h1>
+                    <h1 className='w-full text-[20dvw] leading-50 text-background font-medium text-center'>
+                        A
+                    </h1>
+                    <h1 className='w-full text-[20dvw] leading-50 text-background font-medium text-center'>
+                        R
+                    </h1>
+                    <h1 className='w-full text-[20dvw] leading-50 text-background font-medium text-center'>
+                        I
+                    </h1>
+                    <h1 className='w-full text-[20dvw] leading-50 text-background font-medium text-center'>
+                        S
+                    </h1>
+                </div>
+                <p className='text-background'>Wongsaied</p>
+            </div> */}
         </>
     );
 }
